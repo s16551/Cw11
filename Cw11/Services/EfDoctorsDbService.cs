@@ -22,14 +22,16 @@ namespace Cw11.Services
             _context.Add(doctor);
         }
 
-        public void Delete(Doctor doctor)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+
+            var doctor = _context.Doctor.ToList().Find(x => x.IdDoctor == id);
+            _context.Doctor.ToList().Remove(doctor);
         }
 
-        public IActionResult Details()
+        public void Put(int id, Doctor doctor)
         {
-            throw new NotImplementedException();
+            var doctorToUpdate = _context.Doctor.ToList().Find(x => x.IdDoctor == id);
         }
 
         public IEnumerable<Doctor> GetDoctors()

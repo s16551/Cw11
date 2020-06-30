@@ -35,15 +35,15 @@ namespace Cw11.Controllers
             _context.Add(doctor);
 
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public void Delete(int id)
         {
             _context.Delete(id);
         }
-        [HttpPut]
-        public void Edit(int id)
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] Doctor doctor)
         {
-            _context.se
+            _context.Put(id, doctor);
         }
 
 
