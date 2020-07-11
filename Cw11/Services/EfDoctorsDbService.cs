@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace Cw11.Services
@@ -19,19 +20,33 @@ namespace Cw11.Services
 
         public void Add(Doctor doctor)
         {
-            _context.Add(doctor);
+            _context.Doctor.Add(doctor);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)
         {
+            
+            var doctor = _context.Doctor.Find(id);
 
-            var doctor = _context.Doctor.ToList().Find(x => x.IdDoctor == id);
-            _context.Doctor.ToList().Remove(doctor);
+            if (doctor != null)
+            {
+                _context.Doctor.Remove(doctor);
+                _context.SaveChanges();
+            }
         }
 
-        public void Put(int id, Doctor doctor)
+        public void Update(Doctor doctor)
         {
-            var doctorToUpdate = _context.Doctor.ToList().Find(x => x.IdDoctor == id);
+            var newDoctor = _context.Doctor.Single(d => d.IdDoctor == doctor.IdDoctor);
+            if (newDoctor != null)
+            {
+                newDoctor.FirstName = doctor.FirstName;
+                newDoctor.LastName = doctor.LastName;
+                newDoctor.Prescription = doctor.Prescription;
+                _context.SaveChanges();
+            }
+
         }
 
         public IEnumerable<Doctor> GetDoctors()

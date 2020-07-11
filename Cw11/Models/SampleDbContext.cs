@@ -27,6 +27,8 @@ namespace Cw11.Models
         {
             base.OnModelCreating(modelBuilder);
 
+            //Fluent API - mozna uzyc zamiast adnotacji
+
             modelBuilder.ApplyConfiguration(new DoctorsEfConfiguration());
         }
 

@@ -15,7 +15,7 @@ namespace Cw11.Services
 
         public void Delete(int id);
 
-        public void Put(int id, Doctor doctor);
+        public void Update(Doctor doctor);
 
     }
 }

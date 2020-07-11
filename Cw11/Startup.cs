@@ -30,7 +30,7 @@ namespace Cw11
             services.AddScoped<IDoctorsDbService, EfDoctorsDbService>();
             services.AddDbContext<SampleDbContext>(options => {
 
-                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db-mssql;Integrated Security=True;");
+                options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SampleDb;Integrated Security=True;");
             
             });
             services.AddControllers();

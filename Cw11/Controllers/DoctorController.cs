@@ -28,6 +28,7 @@ namespace Cw11.Controllers
             return Ok(_context.GetDoctors());
         }
 
+        // Create
         [Route("addDoctor")]
         [HttpPost]
         public void Add(Doctor doctor)
@@ -40,10 +41,11 @@ namespace Cw11.Controllers
         {
             _context.Delete(id);
         }
+        // Update
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Doctor doctor)
+        public void Update(Doctor doctor)
         {
-            _context.Put(id, doctor);
+            _context.Update(doctor);
         }
 
 
